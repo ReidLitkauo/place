@@ -1,0 +1,4 @@
+python ./script/public_build_scripts/structure.py
+python ./script/public_build_scripts/style.py
+python ./script/public_build_scripts/script.py
+

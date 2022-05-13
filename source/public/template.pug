@@ -1,0 +1,11 @@
+doctype html
+html
+	head
+		script(crossorigin src="https://unpkg.com/react@18/umd/react.development.js")
+		script(crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js")
+		link(rel="stylesheet" href="/static/" + endpoint + "/style.css")
+		include /head.pug
+	body
+		include /body.pug
+		script(src="/static/" + endpoint + "/script.js")
+

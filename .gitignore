@@ -1,3 +1,4 @@
-# Do not upload the server binary. Build this yourself.
-place
+server-binary
+script/public_build_scripts/__pycache__
+node_modules
 

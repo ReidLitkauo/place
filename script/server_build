@@ -1,2 +1,2 @@
-go build -o ./place source/server/* 
+go build -o ./run-server source/server/* 
 

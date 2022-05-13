@@ -1,0 +1,15 @@
+{
+
+	"sourceDirectory": "./source/public/",
+
+	"targetDirectoryForHtml": "./public/",
+	"targetDirectoryForCss":  "./public/static/",
+
+	"htmlTemplateFile": "./source/public/template.pug",
+
+	"endpoints": [
+		"index"
+	]
+
+}
+

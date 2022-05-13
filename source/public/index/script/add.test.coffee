@@ -1,36 +1,36 @@
-import * as Add from '../../../source/public/index/script/add.coffee'
+import * as Add from './add.coffee'
 
 class TestManager
 
 	constructor: (@numTestCases, @maxNumSize, @numDecimalPlaces) ->
-		this.__buildTestCases()
+		this._buildTestCases()
 
-	__buildTestCases: ->
+	_buildTestCases: ->
 		this.expected = []
 		for i in [0 ... this.numTestCases]
-			this.expected.push this.__buildOneTestCase()
+			this.expected.push this._buildOneTestCase()
 	
-	__buildOneTestCase: ->
-		sum          = this.__getRandomNumber this.maxNumSize
-		secondAddend = this.__getRandomNumber this.maxNumSize
-		firstAddend  = this.__roundToDecimalPlace sum - secondAddend
+	_buildOneTestCase: ->
+		sum          = this._getRandomNumber this.maxNumSize
+		secondAddend = this._getRandomNumber this.maxNumSize
+		firstAddend  = this._roundToDecimalPlace sum - secondAddend
 		{ firstAddend, secondAddend, sum }
 	
-	__getRandomNumber: (max) ->
-		this.__roundToDecimalPlace Math.random() * max
+	_getRandomNumber: (max) ->
+		this._roundToDecimalPlace Math.random() * max
 	
-	__roundToDecimalPlace: (num) ->
+	_roundToDecimalPlace: (num) ->
 		Math.round((10 ** this.numDecimalPlaces) * num) / (10 ** this.numDecimalPlaces)
 	
 	runTestCases: ->
 		this.actual = []
 		for i in [0 ... this.numTestCases]
-			this.actual.push this.__runOneTestCase this.expected[i].firstAddend, this.expected[i].secondAddend
+			this.actual.push this._runOneTestCase this.expected[i].firstAddend, this.expected[i].secondAddend
 		this
 	
-	__runOneTestCase: (firstAddend, secondAddend) ->
+	_runOneTestCase: (firstAddend, secondAddend) ->
 		sum = Add.add firstAddend, secondAddend
-		sum = this.__roundToDecimalPlace sum
+		sum = this._roundToDecimalPlace sum
 		{ firstAddend, secondAddend, sum }
 
 	assertTestCases: ->

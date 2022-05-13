@@ -1,4 +1,13 @@
-body {
-  background: #202;
-  color: #FDF;
+canvas#main-canvas {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  width: 50vmin;
+  height: 50vmin;
+  border: 150vmax solid #333;
+  transform-origin: top left;
+  transform: scale(1) translate(calc(0vmin - 150vmax), calc(0vmin - 150vmax));
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: red;
 }

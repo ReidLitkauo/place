@@ -1,0 +1,19 @@
+canvas#main-canvas
+	$size: 50vmin
+	$borderWidth: 150vmax
+
+	position: fixed
+	top: 50vh
+	left: 50vw
+	width: $size
+	height: $size
+	border: $borderWidth solid #333
+
+	transform-origin: top left
+	transform: scale(1) translate( calc( calc(0*-1*$size) - $borderWidth ), calc( calc(0*-1*$size) - $borderWidth ) )
+
+	image-rendering: pixelated
+	image-rendering: crisp-edges
+
+	background: red // TODO
+

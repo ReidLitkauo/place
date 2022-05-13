@@ -3,7 +3,7 @@ import json
 def loadConfig():
 
 	def openConfigFile():
-		return open("./script/public_build.config.json")
+		return open("./scripts/front-end/build.config.json")
 	
 	def parseConfigFile(file):
 		return json.load(file)

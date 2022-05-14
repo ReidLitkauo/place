@@ -1,19 +1,16 @@
-import TestManagerBase from "./../../../TestManagerBase.coffee"
+import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import CanvasPosition from "./_CanvasPosition.coffee"
 
-class TestManager extends TestManagerBase
+class UnitTestManager extends UnitTestManagerBase
 
-	constructor: (@_numTestCases, @_precision, @_minPosition, @_maxPosition) ->
-		super()
-
-	_buildOneTestCase: (i) ->
+	_buildOneTestCaseAndExpected: (i) ->
 		testX = this._getCoordRawAndExpected()
 		testY = this._getCoordRawAndExpected()
 
-		raw: 
+		testCase:
 			x: testX.raw
 			y: testY.raw
-		result: 
+		expected:
 			x: testX.expected
 			y: testY.expected
 	
@@ -21,11 +18,11 @@ class TestManager extends TestManagerBase
 		oobStatus = this._getCoordOOBStatus()
 		raw = this._getRandomCoord()
 		if oobStatus < 0
-			raw: raw - (this._maxPosition - this._minPosition)
-			expected: this._minPosition
+			raw: raw - (this._params.maxPosition - this._params.minPosition)
+			expected: this._params.minPosition
 		else if oobStatus > 0
-			raw: raw + (this._maxPosition - this._minPosition)
-			expected: this._maxPosition - (10 ** -this._precision)
+			raw: raw + (this._params.maxPosition - this._params.minPosition)
+			expected: this._params.maxPosition - (10 ** -this.PRECISION)
 		else
 			raw: raw
 			expected: raw
@@ -33,19 +30,14 @@ class TestManager extends TestManagerBase
 	_getCoordOOBStatus: () ->
 		this._randInt -1, 2
 	
-	_getRandomCoord: () -> this._randFloat this._minPosition, this._maxPosition
+	_getRandomCoord: () -> this._randFloat this._params.minPosition, this._params.maxPosition
 
 	_runOneTestCase: (testCase) ->
-		pos = CanvasPosition.set testCase.raw.x, testCase.raw.y, null
+		pos = CanvasPosition.set testCase.x, testCase.y, null
 
 		x: pos.rawX
 		y: pos.rawY
 
-
-
-test '_CanvasPosition-set-XY', ->
-	new TestManager 5, 6, 0, 2000
-		.buildTestCases()
-		.runTestCases()
-		.assertTestCases()
+new UnitTestManager '_CanvasPosition-set-XY', 1000, { minPosition: 0, maxPosition: 2000 }
+	.runUnitTest()
 

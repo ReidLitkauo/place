@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./actions/back-end/server-binary
+

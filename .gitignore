@@ -1,4 +1,4 @@
-server-binary
+actions/back-end/server-binary
 script/public_build_scripts/__pycache__
 node_modules
 

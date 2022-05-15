@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo docker run -dp 8090:8090 reid-litkauo-place:latest
+

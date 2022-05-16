@@ -17,6 +17,6 @@ export default class UTM_CanvasPosition_add_Z extends UTM_CanvasPosition_set_Z
 		pos = CanvasPosition.addZoomLevel testCase.addend2
 		pos.zoomLevel
 
-new UTM_CanvasPosition_add_Z '_CanvasPosition-add-Z', 1000, { minPosition: 0, maxPosition: 2000 }
+new UTM_CanvasPosition_add_Z '_CanvasPosition-add-Z', 1000, { numAllowableZooms: CanvasPosition._allowableZoomFactors.length }
 	.runUnitTest()
 

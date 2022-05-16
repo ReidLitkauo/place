@@ -7,7 +7,6 @@ export default class UnitTestManagerBase
 	_actual: []
 
 	constructor: (@_unitTestName, @_numTestCases, @_params) ->
-		this.PRECISION = 6
 
 	runUnitTest: () =>
 		test this._unitTestName, =>
@@ -43,17 +42,6 @@ export default class UnitTestManagerBase
 		expect zippedActual
 			.toStrictEqual zippedExpected
 	
-	_randInt: (min, max) => this._randFloat min, max, 0
-
-	_randFloat: (min, max, numPlaces = this.PRECISION) =>
-		min + this._floorToDecimalPlace Math.random()*(max-min), numPlaces
-
-	_roundToDecimalPlace: (number, numPlaces = this.PRECISION) =>
-		Math.round((10 ** numPlaces) * number) / (10 ** numPlaces)
-	
-	_floorToDecimalPlace: (number, numPlaces = this.PRECISION) =>
-		Math.floor((10 ** numPlaces) * number) / (10 ** numPlaces)
-
 	_zipTestCasesAndResults: (testCases, results) =>
 		ret = []
 		length = Math.min testCases.length, results.length

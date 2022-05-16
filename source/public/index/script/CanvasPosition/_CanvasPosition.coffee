@@ -1,4 +1,4 @@
-
+import FloatPrecision from "../../../_common/FloatPrecision.coffee"
 
 class CanvasPosition
 
@@ -17,7 +17,7 @@ class CanvasPosition
 	_zoomFactor: 0.01
 	_allowableZoomFactors: [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10]
 
-	constructor: (@_precision) ->
+	constructor: ->
 		this.setMin 0, 0
 		this.setMax 2000, 2000
 		this.set 1000.5, 1000.5, 6
@@ -40,8 +40,8 @@ class CanvasPosition
 		this.set this._rawX, this._rawY, this._zoomLevel
 
 	setMax: (x, y) =>
-		this._maxX = x - (10 ** -this._precision)
-		this._maxY = y - (10 ** -this._precision)
+		this._maxX = x - (10 ** -FloatPrecision.PRECISION)
+		this._maxY = y - (10 ** -FloatPrecision.PRECISION)
 		this.set this._rawX, this._rawY, this._zoomLevel
 	
 	setXY: (x, y) => this.set x, y, null
@@ -65,12 +65,9 @@ class CanvasPosition
 		zoomLevel ? this._zoomLevel ]
 	
 	_normalizeCoordsPrecision: (x, y, zoomLevel) => [
-		this._roundToPrecision x
-		this._roundToPrecision y
+		FloatPrecision.round x
+		FloatPrecision.round y
 		Math.floor zoomLevel ]
-		
-	_roundToPrecision: (number, precision = this._precision) =>
-		Math.round((10 ** precision) * number) / (10 ** precision)
 		
 	_normalizeCoordsRange: (x, y, zoomLevel) =>
 		x = Math.max x, this._minX

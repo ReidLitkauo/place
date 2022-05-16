@@ -1,5 +1,6 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import CanvasPosition from "./_CanvasPosition.coffee"
+import Rand from "./../../../_common/Rand.coffee"
 
 export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 
@@ -10,7 +11,7 @@ export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 		testCase: input
 		expected: expected
 	
-	_generateIndex: () => this._randInt 0, this._params.numAllowableZooms
+	_generateIndex: () => Rand.int 0, this._params.numAllowableZooms
 
 	_transformExpected: (input) =>
 		if this._shouldMakeLowerThanAcceptable input
@@ -19,13 +20,13 @@ export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 			input = this._raiseAboveAcceptable input
 		this._fudgeUpward input
 	
-	_shouldMakeLowerThanAcceptable: (input) => input == 0 && this._randInt 0, 2
-	_shouldMakeHigherThanAcceptable: (input) => input == this._params.numAllowableZooms - 1 && this._randInt 0, 2
+	_shouldMakeLowerThanAcceptable: (input) => input == 0 && Rand.int 0, 2
+	_shouldMakeHigherThanAcceptable: (input) => input == this._params.numAllowableZooms - 1 && Rand.int 0, 2
 
-	_lowerBelowAcceptable: (input) => 0 - this._randInt 0, this._params.numAllowableZooms
-	_raiseAboveAcceptable: (input) => this._params.numAllowableZooms - 1 + this._randInt 0, this._params.numAllowableZooms
+	_lowerBelowAcceptable: (input) => 0 - Rand.int 0, this._params.numAllowableZooms
+	_raiseAboveAcceptable: (input) => this._params.numAllowableZooms - 1 + Rand.int 0, this._params.numAllowableZooms
 
-	_fudgeUpward: (input) => input + this._randFloat 0, 1
+	_fudgeUpward: (input) => input + Rand.float 0, 1
 
 	_runOneTestCase: (testCase) =>
 		pos = CanvasPosition.setZoomLevel(testCase)

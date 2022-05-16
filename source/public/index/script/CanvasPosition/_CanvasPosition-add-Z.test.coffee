@@ -13,10 +13,11 @@ export default class UTM_CanvasPosition_add_Z extends UTM_CanvasPosition_set_Z
 		expected: setTestExpected.expected
 	
 	_runOneTestCase: (testCase) ->
-		super._runOneTestCase testCase.addend1
-		pos = CanvasPosition.addZoomLevel testCase.addend2
+		cpos = new CanvasPosition
+		cpos.setZoomLevel testCase.addend1
+		pos = cpos.addZoomLevel testCase.addend2
 		pos.zoomLevel
 
-new UTM_CanvasPosition_add_Z '_CanvasPosition-add-Z', 1000, { numAllowableZooms: CanvasPosition._allowableZoomFactors.length }
+new UTM_CanvasPosition_add_Z 1000, { numAllowableZooms: new CanvasPosition()._allowableZoomFactors.length }
 	.runUnitTest()
 

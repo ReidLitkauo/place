@@ -15,6 +15,6 @@ export default class UTM_TransformCalculator_zoomFactorToStyleScale extends Unit
 	_runOneTestCase: (testCase) =>
 		TransformCalculator._zoomFactorToStyleScale testCase
 
-new UTM_TransformCalculator_zoomFactorToStyleScale 'TransformCalculator_zoomFactorToStyleScale', 1000, {}
+new UTM_TransformCalculator_zoomFactorToStyleScale 1000, {}
 	.runUnitTest()
 

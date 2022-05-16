@@ -1,6 +1,6 @@
 import FloatPrecision from "../../../_common/FloatPrecision.coffee"
 
-class CanvasPosition
+export default class CanvasPosition
 
 	_rawX: 0
 	_rawY: 0
@@ -17,12 +17,12 @@ class CanvasPosition
 	_zoomFactor: 0.01
 	_allowableZoomFactors: [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10]
 
-	constructor: ->
+	constructor: (@_updateFunction = null) ->
 		this.setMin 0, 0
 		this.setMax 2000, 2000
 		this.set 1000.5, 1000.5, 6
 	
-	get: =>
+	getRaw: =>
 		rawX: this._rawX
 		rawY: this._rawY
 		floorX: this._floorX
@@ -51,7 +51,8 @@ class CanvasPosition
 	set: (x, y, zoomLevel) =>
 		[normalizedX, normalizedY, normalizedZoomLevel] = this._normalizeCoords x, y, zoomLevel
 		this._setWithNormalizedCoords normalizedX, normalizedY, normalizedZoomLevel
-		this.get()
+		this._updateFunction? this.getRaw()
+		this.getRaw()
 	
 	_normalizeCoords: (x, y, zoomLevel) =>
 		[x, y, zoomLevel] = this._fillNulledParameters x, y, zoomLevel
@@ -100,8 +101,4 @@ class CanvasPosition
 	addZoomLevel: (zoomLevel) => this.add 0, 0, zoomLevel
 
 	add: (x, y, zoomLevel) => this.set this._rawX + x, this._rawY + y, this._zoomLevel + zoomLevel
-
-
-
-export default canvasPosition = new CanvasPosition 6
 

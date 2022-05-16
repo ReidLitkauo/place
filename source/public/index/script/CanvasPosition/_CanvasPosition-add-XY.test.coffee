@@ -13,12 +13,13 @@ export default class UTM_CanvasPosition_add_XY extends UTM_CanvasPosition_set_XY
 		expected: setTestExpected.expected
 
 	_runOneTestCase: (testCase) ->
-		super._runOneTestCase testCase.addend1
-		pos = CanvasPosition.addXY testCase.addend2.x, testCase.addend2.y
+		cpos = new CanvasPosition
+		cpos.setXY testCase.addend1.x, testCase.addend1.y
+		pos = cpos.addXY testCase.addend2.x, testCase.addend2.y
 
 		x: pos.rawX
 		y: pos.rawY
 
-new UTM_CanvasPosition_add_XY '_CanvasPosition-add-XY', 1000, { sideLength: 2000 }
+new UTM_CanvasPosition_add_XY 1000, { sideLength: 2000 }
 	.runUnitTest()
 

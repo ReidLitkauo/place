@@ -35,11 +35,11 @@ export default class UTM_CanvasPosition_set_XY extends UnitTestManagerBase
 	_getRandomCoord: () -> Rand.float 0, this._params.sideLength
 
 	_runOneTestCase: (testCase) ->
-		pos = CanvasPosition.setXY testCase.x, testCase.y
+		pos = new CanvasPosition().setXY testCase.x, testCase.y
 
 		x: pos.rawX
 		y: pos.rawY
 
-new UTM_CanvasPosition_set_XY '_CanvasPosition-set-XY', 1000, { sideLength: 2000 }
+new UTM_CanvasPosition_set_XY 1000, { sideLength: 2000 }
 	.runUnitTest()
 

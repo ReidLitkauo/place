@@ -6,9 +6,14 @@ export default class App extends React.Component
 
 	constructor: (props) ->
 		super props
+		@canvasPosition = new CanvasPosition this.positionUpdated
 		this.state =
-			canvasPosition: CanvasPosition.get()
+			rawCanvasPosition: @canvasPosition?.getRaw()
+	
+	positionUpdated: (position) =>
+		this.setState
+			rawCanvasPosition: this.canvasPosition?.getRaw()
 
 	render: =>
-		<MainCanvas canvasPosition={this.state.canvasPosition} />
+		<MainCanvas canvasPosition={this.canvasPosition} />
 

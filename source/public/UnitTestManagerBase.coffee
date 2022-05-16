@@ -6,10 +6,10 @@ export default class UnitTestManagerBase
 	_expected: []
 	_actual: []
 
-	constructor: (@_unitTestName, @_numTestCases, @_params) ->
+	constructor: (@_numTestCases, @_params) ->
 
 	runUnitTest: () =>
-		test this._unitTestName, =>
+		test this.constructor.name, =>
 			this._buildTestCases()
 			this._runTestCases()
 			this._assertTestCases()

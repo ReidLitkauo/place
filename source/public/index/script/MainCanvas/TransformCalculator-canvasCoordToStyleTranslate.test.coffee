@@ -22,6 +22,6 @@ export default class UTM_TransformCalculator_canvasCoordToStyleTranslate extends
 	_runOneTestCase: (testCase) =>
 		TransformCalculator._canvasCoordToStyleTranslate testCase
 
-new UTM_TransformCalculator_canvasCoordToStyleTranslate 'TransformCalculator_canvasCoordToStyleTranslate', 5, { sideLength: 2000 }
+new UTM_TransformCalculator_canvasCoordToStyleTranslate 1000, { sideLength: 2000 }
 	.runUnitTest()
 

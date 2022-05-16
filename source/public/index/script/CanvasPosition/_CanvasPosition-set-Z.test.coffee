@@ -29,9 +29,9 @@ export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 	_fudgeUpward: (input) => input + Rand.float 0, 1
 
 	_runOneTestCase: (testCase) =>
-		pos = CanvasPosition.setZoomLevel(testCase)
+		pos = new CanvasPosition().setZoomLevel testCase
 		pos.zoomLevel
 
-new UTM_CanvasPosition_set_Z '_CanvasPosition-set-Z', 1000, { numAllowableZooms: 10 }
+new UTM_CanvasPosition_set_Z 1000, { numAllowableZooms: new CanvasPosition()._allowableZoomFactors.length }
 	.runUnitTest()
 

@@ -1,4 +1,5 @@
 #!/bin/sh
 
+sudo docker container stop `sudo docker container ls -q`
 sudo docker run -dp 8090:8090 reid-litkauo-place:latest
 

@@ -4,9 +4,9 @@ import UnitTestManagerBase from "./UnitTestManagerBase.coffee"
 # Using this temporary function in place of a testable module
 sum = (a, b) -> a + b
 
-class UnitTestManager extends UnitTestManagerBase
+export default class UnitTestManager extends UnitTestManagerBase
 
-	_buildOneTestCaseAndExpected: () =>
+	_buildOneTestCaseAndExpected: (i) =>
 		result = this._randFloat 0, this._params.upperBound
 		firstAddend = this._randFloat 0, this._params.upperBound
 		secondAddend = result - firstAddend

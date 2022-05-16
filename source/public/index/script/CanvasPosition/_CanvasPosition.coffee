@@ -22,6 +22,18 @@ class CanvasPosition
 		this.setMax 2000, 2000
 		this.set 1000.5, 1000.5, 6
 	
+	get: =>
+		rawX: this._rawX
+		rawY: this._rawY
+		floorX: this._floorX
+		floorY: this._floorY
+		minX: this._minX
+		minY: this._minY
+		maxX: this._maxX
+		maxY: this._maxY
+		zoomLevel: this._zoomLevel
+		zoomFactor: this._zoomFactor
+
 	setMin: (x, y) =>
 		this._minX = x
 		this._minY = y
@@ -31,6 +43,10 @@ class CanvasPosition
 		this._maxX = x - (10 ** -this._precision)
 		this._maxY = y - (10 ** -this._precision)
 		this.set this._rawX, this._rawY, this._zoomLevel
+	
+	setXY: (x, y) => this.set x, y, null
+
+	setZoomLevel: (zoomLevel) => this.set null, null, zoomLevel
 
 	set: (x, y, zoomLevel) =>
 		[normalizedX, normalizedY, normalizedZoomLevel] = this._normalizeCoords x, y, zoomLevel
@@ -82,17 +98,11 @@ class CanvasPosition
 	_setZoomCoords: (zoomLevel) =>
 		this._zoomFactor = this._allowableZoomFactors[zoomLevel]
 	
-	get: =>
-		rawX: this._rawX
-		rawY: this._rawY
-		floorX: this._floorX
-		floorY: this._floorY
-		minX: this._minX
-		minY: this._minY
-		maxX: this._maxX
-		maxY: this._maxY
-		zoomLevel: this._zoomLevel
-		zoomFactor: this._zoomFactor
+	addXY: (x, y) => this.add x, y, 0
+
+	addZoomLevel: (zoomLevel) => this.add 0, 0, zoomLevel
+
+	add: (x, y, zoomLevel) => this.set this._rawX + x, this._rawY + y, this._zoomLevel + zoomLevel
 
 
 

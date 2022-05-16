@@ -1,9 +1,9 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import CanvasPosition from "./_CanvasPosition.coffee"
 
-class UnitTestManager extends UnitTestManagerBase
+export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 
-	_buildOneTestCaseAndExpected: () =>
+	_buildOneTestCaseAndExpected: (i) =>
 		expected = this._generateIndex()
 		input = this._transformExpected expected
 
@@ -28,8 +28,9 @@ class UnitTestManager extends UnitTestManagerBase
 	_fudgeUpward: (input) => input + this._randFloat 0, 1
 
 	_runOneTestCase: (testCase) =>
-		CanvasPosition.set(null, null, testCase).zoomLevel
+		pos = CanvasPosition.setZoomLevel(testCase)
+		pos.zoomLevel
 
-new UnitTestManager '_CanvasPosition-set-Z', 1000, { numAllowableZooms: 10 }
+new UTM_CanvasPosition_set_Z '_CanvasPosition-set-Z', 1000, { numAllowableZooms: 10 }
 	.runUnitTest()
 

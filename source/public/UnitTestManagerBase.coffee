@@ -18,7 +18,7 @@ export default class UnitTestManagerBase
 	
 	_buildTestCases: =>
 		for i in [0 ... this._numTestCases]
-			testCase = this._buildOneTestCaseAndExpected()
+			testCase = this._buildOneTestCaseAndExpected i
 			this._testCases[i] = testCase.testCase
 			this._expected[i] = testCase.expected
 	

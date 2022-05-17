@@ -2,7 +2,7 @@ import Globals from "../../../_common/Globals.coffee"
 
 export default class MouseEventHandler
 
-	constructor: (@mainCanvas) ->
+	constructor: (@canvasPosition, @getBoundingBox) ->
 
 	onMouseDown: (evt) =>
 		this._setAnchor evt
@@ -16,10 +16,10 @@ export default class MouseEventHandler
 	
 	onWheel: (evt) =>
 		zoomLevelDelta = -1 * Math.round evt.deltaY / Math.abs evt.deltaY
-		this.mainCanvas.canvasPosition.addZoomLevel zoomLevelDelta
+		this.canvasPosition.addZoomLevel zoomLevelDelta
 
 	_setAnchor: (evt) =>
-		rawPos = this.mainCanvas.canvasPosition.getRaw()
+		rawPos = this.canvasPosition.getRaw()
 		this._anchor =
 			isSet: true
 			screenCoords: { x: evt.clientX, y: evt.clientY }
@@ -32,7 +32,7 @@ export default class MouseEventHandler
 			canvasCoords: { x: null, y: null }
 	
 	_moveCanvasViaMouseDrag: (evt) =>
-		boundingBox = this.mainCanvas.getBoundingBox()
+		boundingBox = this.getBoundingBox()
 		mouseScreenCoords =
 			x: evt.clientX
 			y: evt.clientY
@@ -45,5 +45,5 @@ export default class MouseEventHandler
 		newCanvasPosition =
 			x: this._anchor.canvasCoords.x - mouseDeltaFromAnchorCanvasCoords.x
 			y: this._anchor.canvasCoords.y - mouseDeltaFromAnchorCanvasCoords.y
-		this.mainCanvas.canvasPosition.setXY newCanvasPosition.x, newCanvasPosition.y
+		this.canvasPosition.setXY newCanvasPosition.x, newCanvasPosition.y
 

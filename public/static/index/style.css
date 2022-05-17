@@ -1,4 +1,7 @@
-canvas#main-canvas {
+#main-canvas-parent {
+  position: relative;
+}
+#main-canvas-parent #main-canvas {
   position: fixed;
   top: 50vh;
   left: 50vw;
@@ -10,4 +13,9 @@ canvas#main-canvas {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   background: radial-gradient(circle, rgb(58, 164, 180) 0%, rgb(139, 44, 192) 18%, rgb(253, 29, 29) 37%, rgb(253, 191, 49) 61%, rgb(139, 252, 69) 87%);
+}
+#main-canvas-parent #canvas-reticule {
+  position: fixed;
+  pointer-events: none;
+  background: red;
 }

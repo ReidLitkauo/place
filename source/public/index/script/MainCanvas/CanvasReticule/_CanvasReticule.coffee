@@ -1,10 +1,26 @@
 import React from 'react'
+import AnimatedComponent from "../../../../_common/AnimatedComponent.coffee"
 
-export default class CanvasReticule extends React.Component
+export default class CanvasReticule extends AnimatedComponent
 
 	constructor: (props) ->
 		super props
 
+	_computeAnimationStyle: =>
+		currentPosition = this.props.canvasPosition.getRaw()
+		topLeft = this.props.coordinateSpaceConverter.canvasToScreen {
+			x: currentPosition.floorX
+			y: currentPosition.floorY }
+		bottomRight = this.props.coordinateSpaceConverter.canvasToScreen {
+			x: currentPosition.floorX + 1
+			y: currentPosition.floorY + 1 }
+
+		top:    topLeft.y + "px"
+		left:   topLeft.x + "px"
+		width:  (bottomRight.x - topLeft.x) + "px"
+		height: (bottomRight.y - topLeft.y) + "px"
+	
 	render: =>
-		<div></div>
+		<div id="canvas-reticule" ref={this.ref}>
+		</div>
 

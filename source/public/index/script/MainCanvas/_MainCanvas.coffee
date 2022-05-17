@@ -43,6 +43,6 @@ export default class MainCanvas extends AnimatedComponent
 				onMouseUp={this.mouseEventHandler.onMouseUp}     onWheel={this.mouseEventHandler.onWheel}
 				ref={this.ref} >
 			</canvas>
-			<CanvasReticule canvasPosition={this.canvasPosition} coordinateSpaceConverter={this.coordinateSpaceConverter} />
+			<CanvasReticle canvasPosition={this.canvasPosition} coordinateSpaceConverter={this.coordinateSpaceConverter} />
 		</div>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import AnimatedComponent from "../../../../_common/AnimatedComponent.coffee"
 
-export default class CanvasReticule extends AnimatedComponent
+export default class CanvasReticle extends AnimatedComponent
 
 	constructor: (props) ->
 		super props
@@ -21,6 +21,6 @@ export default class CanvasReticule extends AnimatedComponent
 		height: (bottomRight.y - topLeft.y) + "px"
 	
 	render: =>
-		<div id="canvas-reticule" ref={this.ref}>
+		<div id="canvas-reticle" ref={this.ref}>
 		</div>
 

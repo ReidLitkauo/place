@@ -4,7 +4,7 @@ import Globals from '../../../_common/Globals.coffee'
 import CoordinateSpaceConverter from './CoordinateSpaceConverter.coffee'
 import MouseEventHandler from './MouseEventHandler.coffee'
 import TransformCalculator from './TransformCalculator.coffee'
-import CanvasReticule from './CanvasReticule/_CanvasReticule.coffee'
+import CanvasReticle from './CanvasReticule/_CanvasReticle.coffee'
 
 export default class MainCanvas extends AnimatedComponent
 

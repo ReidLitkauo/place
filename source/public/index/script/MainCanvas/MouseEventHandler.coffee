@@ -1,40 +1,49 @@
-
+import Globals from "../../../_common/Globals.coffee"
 
 export default class MouseEventHandler
 
-	anchor:
-		isSet: false
-		screenCoords:
-			x: null
-			y: null
-		canvasCoords:
-			x: null
-			y: null
+	constructor: (@mainCanvas) ->
 
-	constructor: (@canvasPosition) ->
-
-	onMouseDown: (e) =>
-		console.log 'onMouseDown'
-		console.log e
+	onMouseDown: (evt) =>
+		this._setAnchor evt
 	
-	onMouseMove: (e) =>
-		console.log 'onMouseMove'
-		console.log e
+	onMouseMove: (evt) =>
+		if this._anchor?.isSet
+			this._moveCanvasViaMouseDrag evt
 	
-	onMouseUp: (e) =>
-		console.log 'onMouseUp'
-		console.log e
+	onMouseUp: (evt) =>
+		this._clearAnchor()
 	
-	onWheel: (e) =>
-		zoomLevelDelta = -1 * Math.round e.deltaY / Math.abs e.deltaY
-		this.canvasPosition.addZoomLevel zoomLevelDelta
+	onWheel: (evt) =>
+		zoomLevelDelta = -1 * Math.round evt.deltaY / Math.abs evt.deltaY
+		this.mainCanvas.canvasPosition.addZoomLevel zoomLevelDelta
 
-	_setAnchor: (e) =>
-		anchor.isSet = true
-		anchor.screenCoords = { x: e.clientX, y: e.clientY }
+	_setAnchor: (evt) =>
+		rawPos = this.mainCanvas.canvasPosition.getRaw()
+		this._anchor =
+			isSet: true
+			screenCoords: { x: evt.clientX, y: evt.clientY }
+			canvasCoords: { x: rawPos.rawX, y: rawPos.rawY }
 
-	_clearAnchor: (e) =>
-		anchor.isSet = false
-		anchor.screenCoords = { x: null, y: null }
-		anchor.canvasCoords = { x: null, y: null }
+	_clearAnchor: =>
+		this._anchor =
+			isSet: false
+			screenCoords: { x: null, y: null }
+			canvasCoords: { x: null, y: null }
+	
+	_moveCanvasViaMouseDrag: (evt) =>
+		boundingBox = this.mainCanvas.getBoundingBox()
+		mouseScreenCoords =
+			x: evt.clientX
+			y: evt.clientY
+		mouseDeltaFromAnchorScreenCoords =
+			x: mouseScreenCoords.x - this._anchor.screenCoords.x
+			y: mouseScreenCoords.y - this._anchor.screenCoords.y
+		mouseDeltaFromAnchorCanvasCoords =
+			x: mouseDeltaFromAnchorScreenCoords.x * Globals.BOARD_SIDE_LENGTH_IN_TILES / boundingBox.width
+			y: mouseDeltaFromAnchorScreenCoords.y * Globals.BOARD_SIDE_LENGTH_IN_TILES / boundingBox.height
+		newCanvasPosition =
+			x: this._anchor.canvasCoords.x - mouseDeltaFromAnchorCanvasCoords.x
+			y: this._anchor.canvasCoords.y - mouseDeltaFromAnchorCanvasCoords.y
+		this.mainCanvas.canvasPosition.setXY newCanvasPosition.x, newCanvasPosition.y
 

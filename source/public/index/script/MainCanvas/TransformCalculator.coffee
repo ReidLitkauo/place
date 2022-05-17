@@ -1,5 +1,5 @@
-import MainCanvas from "./_MainCanvas.coffee"
 import FloatPrecision from "./../../../_common/FloatPrecision.coffee"
+import Globals from "./../../../_common/Globals.coffee"
 
 export default class TransformCalculator
 	
@@ -7,7 +7,7 @@ export default class TransformCalculator
 	@_borderWidth: '150vmax'
 
 	@getTransformStyle: (canvasPosition) ->
-		this._zoomFactorToStyleScale(canvasPosition.zoomFactor) + this._canvasCoordToStyleTranslate(canvasPosition)
+		this._zoomScaleToStyleScale(canvasPosition.zoomScale) + this._canvasCoordToStyleTranslate(canvasPosition)
 
 	@_canvasCoordToStyleTranslate: (canvasCoord) ->
 		" translate(#{this._canvasOneCoordToStyleTranslate canvasCoord.rawX}, #{this._canvasOneCoordToStyleTranslate canvasCoord.rawY})"
@@ -15,10 +15,8 @@ export default class TransformCalculator
 	@_canvasOneCoordToStyleTranslate: (canvasCoord1D) ->
 		" calc(calc(#{this._canvasOneCoordToRatio canvasCoord1D} * -1 * #{this._sideSize}) - #{this._borderWidth}) "
 	
-	@_canvasOneCoordToRatio: (canvasCoord1D) -> FloatPrecision.round canvasCoord1D / MainCanvas.sideLengthInTiles
+	@_canvasOneCoordToRatio: (canvasCoord1D) -> FloatPrecision.round canvasCoord1D / Globals.BOARD_SIDE_LENGTH_IN_TILES
 
-	@_zoomFactorToStyleScale: (zoomFactor) ->
-		" scale(#{this._zoomFactorToScale(zoomFactor)}) "
-	
-	@_zoomFactorToScale: (zoomFactor) -> FloatPrecision.round zoomFactor * 100
+	@_zoomScaleToStyleScale: (zoomScale) ->
+		" scale(#{zoomScale}) "
 

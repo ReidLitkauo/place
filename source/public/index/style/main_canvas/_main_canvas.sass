@@ -1,19 +1,24 @@
-canvas#main-canvas
-	$size: 50vmin
-	$borderWidth: 150vmax
+#main-canvas-parent
+	position: relative
+	
+	#main-canvas
+		$size: 50vmin
+		$borderWidth: 150vmax
 
-	position: fixed
-	top: 50vh
-	left: 50vw
-	width: $size
-	height: $size
-	border: $borderWidth solid #333
+		position: fixed
+		top: 50vh
+		left: 50vw
+		width: $size
+		height: $size
+		border: $borderWidth solid #333
 
-	transform-origin: top left
-	transform: scale(1) translate( calc( calc(0*-1*$size) - $borderWidth ), calc( calc(0*-1*$size) - $borderWidth ) )
+		transform-origin: top left
+		transform: scale(1) translate( calc( calc(0*-1*$size) - $borderWidth ), calc( calc(0*-1*$size) - $borderWidth ) )
 
-	image-rendering: pixelated
-	image-rendering: crisp-edges
+		image-rendering: pixelated
+		image-rendering: crisp-edges
 
-	background: red // TODO
+		background: radial-gradient(circle, rgba(58,164,180,1) 0%, rgba(139,44,192,1) 18%, rgba(253,29,29,1) 37%, rgba(253,191,49,1) 61%, rgba(139,252,69,1) 87%) // TODO
 
+	.canvas-reticule
+		

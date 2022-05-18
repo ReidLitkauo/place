@@ -17,10 +17,10 @@ export default class UTM_TransformCalculator_canvasCoordToStyleTranslate extends
 		{ testCase, expected }
 
 	_buildTranslateStringForOneCoord: (coord) =>
-		" calc(calc(#{coord} * -1 * 50vmin) - 150vmax) "
+		" -#{coord * 100}% "
 	
 	_runOneTestCase: (testCase) =>
-		TransformCalculator._canvasCoordToStyleTranslate testCase
+		TransformCalculator._canvasCoordToStyleTranslate testCase.rawX, testCase.rawY
 
 new UTM_TransformCalculator_canvasCoordToStyleTranslate 1000, { sideLength: 2000 }
 	.runUnitTest()

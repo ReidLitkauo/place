@@ -4,17 +4,18 @@ import Globals from "./../../../_common/Globals.coffee"
 export default class TransformCalculator
 	
 	@_sideSize: '50vmin'
-	@_borderWidth: '150vmax'
 
 	@getTransformStyle: (canvasPosition) ->
-		this._zoomScaleToStyleScale(canvasPosition.zoomScale) + this._canvasCoordToStyleTranslate(canvasPosition)
+		this._zoomScaleToStyleScale(canvasPosition.zoomScale) + this._canvasCoordToStyleTranslate(canvasPosition.rawX, canvasPosition.rawY)
 
-	@_canvasCoordToStyleTranslate: (canvasCoord) ->
-		" translate(#{this._canvasOneCoordToStyleTranslate canvasCoord.rawX}, #{this._canvasOneCoordToStyleTranslate canvasCoord.rawY})"
+	@_canvasCoordToStyleTranslate: (x, y) ->
+		" translate(#{this._canvasOneCoordToStyleTranslate x}, #{this._canvasOneCoordToStyleTranslate y})"
 
 	@_canvasOneCoordToStyleTranslate: (canvasCoord1D) ->
-		" calc(calc(#{this._canvasOneCoordToRatio canvasCoord1D} * -1 * #{this._sideSize}) - #{this._borderWidth}) "
+		" -#{this._canvasOneCoordToPercent canvasCoord1D}% "
 	
+	@_canvasOneCoordToPercent: (canvasCoord1D) -> 100 * this._canvasOneCoordToRatio canvasCoord1D
+
 	@_canvasOneCoordToRatio: (canvasCoord1D) -> FloatPrecision.round canvasCoord1D / Globals.BOARD_SIDE_LENGTH_IN_TILES
 
 	@_zoomScaleToStyleScale: (zoomScale) ->

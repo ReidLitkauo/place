@@ -22,5 +22,6 @@ export default class CanvasReticle extends AnimatedComponent
 	
 	render: =>
 		<div id="canvas-reticle" ref={this.ref}>
+			<img src="/assets/images/reticle.svg" />
 		</div>
 

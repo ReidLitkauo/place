@@ -1,4 +1,5 @@
 import React from 'react'
+import ComponentAnimationManager from './ComponentAnimationManager.coffee'
 
 export default class AnimatedComponent extends React.Component
 
@@ -7,13 +8,14 @@ export default class AnimatedComponent extends React.Component
 		@ref = React.createRef()
 
 	componentDidMount: =>
-		this._runAnimationFrame = true
-		window.requestAnimationFrame this._animationFrame
+		ComponentAnimationManager.registerComponent this.ref.current, this._computeAnimationStyle
+	
+	# _computeAnimationStyle to be implemented by child
 	
 	componentWillUnmount: =>
-		this._runAnimationFrame = false
+		ComponentAnimationManager.deregisterComponent this.ref.current
 	
-	_animationFrame: =>
+###	_animationFrame: =>
 		style = this._computeAnimationStyle()
 		this._applyAnimationStyle style
 		if this._runAnimationFrame then window.requestAnimationFrame this._animationFrame
@@ -22,5 +24,5 @@ export default class AnimatedComponent extends React.Component
 
 	_applyAnimationStyle: (style) =>
 		for attribute of style
-			this.ref.current.style[attribute] = style[attribute]
+			this.ref.current.style[attribute] = style[attribute]###
 

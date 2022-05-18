@@ -11,7 +11,7 @@ export default class MainCanvas extends AnimatedComponent
 	id: 'main-canvas'
 
 	constructor: (props) ->
-		super props
+		super props, Globals.ANIMATION_INDICES.MAIN_CANVAS
 		@canvasPosition = props.canvasPosition
 		@coordinateSpaceConverter = new CoordinateSpaceConverter this.getBoundingBox
 		@mouseEventHandler = new MouseEventHandler @canvasPosition, this.getBoundingBox

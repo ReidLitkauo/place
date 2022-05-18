@@ -3,19 +3,24 @@ import React from 'react'
 class ComponentAnimationManager
 
 	constructor: ->
-		@mapComponentsToStyleFunctions = new Map()
+		@_mapComponentsToStyleFunctions = new Map()
 		window.requestAnimationFrame @_runAnimationFrame
 
-	registerComponent: (reference, styleFunction) =>
-		this.mapComponentsToStyleFunctions.set reference, styleFunction
-		console.log this.mapComponentsToStyleFunctions
+	registerComponent: (reference, styleFunction, animationIndex) =>
+		this._mapComponentsToStyleFunctions.set reference, { styleFunction, animationIndex }
+		console.log this._mapComponentsToStyleFunctions
+		this._sortMap()
+	
+	_sortMap: =>
+		this._mapComponentsToStyleFunctions = new Map [...this._mapComponentsToStyleFunctions].sort (a, b) ->
+			return a[1].animationIndex > b[1].animationIndex
 
 	deregisterComponent: (reference) =>
-		this.mapComponentsToStyleFunctions.delete reference
+		this._mapComponentsToStyleFunctions.delete reference
 		
 	_runAnimationFrame: =>
-		this.mapComponentsToStyleFunctions.forEach (styleFunction, component) =>
-			style = styleFunction()
+		this._mapComponentsToStyleFunctions.forEach (animationAttributes, component) =>
+			style = animationAttributes.styleFunction()
 			this._applyAnimationStyleToComponent style, component
 		window.requestAnimationFrame this._runAnimationFrame
 	

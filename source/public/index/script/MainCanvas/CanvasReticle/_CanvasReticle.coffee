@@ -1,10 +1,11 @@
 import React from 'react'
 import AnimatedComponent from "../../../../_common/AnimatedComponent.coffee"
+import Globals from '../../../../_common/Globals.coffee'
 
 export default class CanvasReticle extends AnimatedComponent
 
 	constructor: (props) ->
-		super props
+		super props, Globals.ANIMATION_INDICES.CANVAS_RETICLE
 
 	_computeAnimationStyle: =>
 		currentPosition = this.props.canvasPosition.getRaw()

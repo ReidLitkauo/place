@@ -3,13 +3,11 @@ import Globals from "./../../../_common/Globals.coffee"
 
 export default class TransformCalculator
 	
-	@_sideSize: '50vmin'
-
 	@getTransformStyle: (canvasPosition) ->
 		this._zoomScaleToStyleScale(canvasPosition.zoomScale) + this._canvasCoordToStyleTranslate(canvasPosition.rawX, canvasPosition.rawY)
 
 	@_canvasCoordToStyleTranslate: (x, y) ->
-		" translate(#{this._canvasOneCoordToStyleTranslate x}, #{this._canvasOneCoordToStyleTranslate y})"
+		" translate(#{this._canvasOneCoordToStyleTranslate x}, #{this._canvasOneCoordToStyleTranslate y}) "
 
 	@_canvasOneCoordToStyleTranslate: (canvasCoord1D) ->
 		" -#{this._canvasOneCoordToPercent canvasCoord1D}% "

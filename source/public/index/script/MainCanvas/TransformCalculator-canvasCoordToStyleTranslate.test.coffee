@@ -12,7 +12,7 @@ export default class UTM_TransformCalculator_canvasCoordToStyleTranslate extends
 		testCase =
 			rawX: FloatPrecision.round expectedRatio.x * this._params.sideLength
 			rawY: FloatPrecision.round expectedRatio.y * this._params.sideLength
-		expected = " translate(#{this._buildTranslateStringForOneCoord expectedRatio.x}, #{this._buildTranslateStringForOneCoord expectedRatio.y})"
+		expected = " translate(#{this._buildTranslateStringForOneCoord expectedRatio.x}, #{this._buildTranslateStringForOneCoord expectedRatio.y}) "
 
 		{ testCase, expected }
 

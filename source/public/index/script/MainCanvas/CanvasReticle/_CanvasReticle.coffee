@@ -1,5 +1,5 @@
 import React from 'react'
-import AnimatedComponent from "../../../../_common/AnimatedComponent.coffee"
+import AnimatedComponent from "../../../../_common/AnimatedComponent/_AnimatedComponent.coffee"
 import Globals from '../../../../_common/Globals.coffee'
 
 export default class CanvasReticle extends AnimatedComponent

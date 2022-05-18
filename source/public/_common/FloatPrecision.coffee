@@ -2,7 +2,7 @@
 
 export default class FloatPrecision
 
-	@PRECISION: 10
+	@PRECISION: 6
 
 	@round: (number, precision = this.PRECISION) ->
 		Math.round( number * (10 ** precision) ) / (10 ** precision)

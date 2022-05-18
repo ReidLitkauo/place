@@ -19,8 +19,8 @@ export default class CanvasPosition
 	_allowableZoomFactors: [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10]
 
 	constructor: (@_updateFunction = null) ->
-		this.setMin 0, 0
-		this.setMax 2000, 2000
+		this._setMinNoUpdate 0, 0
+		this._setMaxNoUpdate 2000, 2000
 		this.set 1000.5, 1000.5, 6
 	
 	getRaw: =>
@@ -37,14 +37,20 @@ export default class CanvasPosition
 		zoomScale: this._zoomScale
 
 	setMin: (x, y) =>
+		this._setMinNoUpdate x, y
+		this.set this._rawX, this._rawY, this._zoomLevel
+	
+	_setMinNoUpdate: (x, y) =>
 		this._minX = x
 		this._minY = y
-		this.set this._rawX, this._rawY, this._zoomLevel
 
 	setMax: (x, y) =>
+		this._setMaxNoUpdate x, y
+		this.set this._rawX, this._rawY, this._zoomLevel
+	
+	_setMaxNoUpdate: (x, y) =>
 		this._maxX = x - (10 ** -FloatPrecision.PRECISION)
 		this._maxY = y - (10 ** -FloatPrecision.PRECISION)
-		this.set this._rawX, this._rawY, this._zoomLevel
 	
 	setXY: (x, y) => this.set x, y, null
 

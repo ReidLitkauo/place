@@ -6,7 +6,7 @@ import FloatPrecision from "./_common/FloatPrecision.coffee"
 # Using this temporary function in place of a testable module
 sum = (a, b) -> a + b
 
-export default class UTM_Example extends UnitTestManagerBase
+export default class UnitTestExample extends UnitTestManagerBase
 
 	_buildOneTestCaseAndExpected: (i) =>
 		result = Rand.float 0, this._params.upperBound
@@ -19,6 +19,6 @@ export default class UTM_Example extends UnitTestManagerBase
 	_runOneTestCase: (testCase) =>
 		FloatPrecision.round sum testCase.firstAddend, testCase.secondAddend
 
-new UTM_Example 'UnitTestExample', 1000, { upperBound: 10 }
+new UnitTestExample 1000, { upperBound: 10 }
 	.runUnitTest()
 

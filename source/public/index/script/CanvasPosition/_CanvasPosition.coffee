@@ -1,4 +1,4 @@
-import FloatPrecision from "../../../_common/FloatPrecision.coffee"
+import FloatPrecision from "../../../_common/script/FloatPrecision.coffee"
 
 export default class CanvasPosition
 

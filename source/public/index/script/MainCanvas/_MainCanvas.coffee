@@ -1,6 +1,6 @@
 import React from 'react'
-import AnimatedComponent from '../../../_common/AnimatedComponent/_AnimatedComponent.coffee'
-import Globals from '../../../_common/Globals.coffee'
+import AnimatedComponent from '../../../_common/script/AnimatedComponent/_AnimatedComponent.coffee'
+import Globals from '../../../_common/script/Globals.coffee'
 import CoordinateSpaceConverter from './CoordinateSpaceConverter.coffee'
 import MouseEventHandler from './MouseEventHandler.coffee'
 import TransformCalculator from './TransformCalculator.coffee'
@@ -12,9 +12,8 @@ export default class MainCanvas extends AnimatedComponent
 
 	constructor: (props) ->
 		super props, Globals.ANIMATION_INDICES.MAIN_CANVAS
-		@canvasPosition = props.canvasPosition
 		@coordinateSpaceConverter = new CoordinateSpaceConverter this.getBoundingBox
-		@mouseEventHandler = new MouseEventHandler @canvasPosition, this.getBoundingBox
+		@mouseEventHandler = new MouseEventHandler props.canvasPosition, this.getBoundingBox
 	
 	# TODO Only for reference while I don't have the ws server implemented so I can see tiles on the screen
 	componentDidMount: =>
@@ -35,6 +34,6 @@ export default class MainCanvas extends AnimatedComponent
 			<canvas id={this.id} ref={this.ref}
 				width={Globals.BOARD_SIDE_LENGTH_IN_TILES} height={Globals.BOARD_SIDE_LENGTH_IN_TILES} >
 			</canvas>
-			<CanvasReticle canvasPosition={this.canvasPosition} coordinateSpaceConverter={this.coordinateSpaceConverter} />
+			<CanvasReticle canvasPosition={this.props.canvasPosition} coordinateSpaceConverter={this.coordinateSpaceConverter} />
 		</div>
 

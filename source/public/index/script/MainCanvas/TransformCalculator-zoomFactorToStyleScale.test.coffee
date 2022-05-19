@@ -1,7 +1,7 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import TransformCalculator from "./TransformCalculator.coffee"
-import FloatPrecision from "./../../../_common/FloatPrecision.coffee"
-import Rand from "./../../../_common/Rand.coffee"
+import FloatPrecision from "./../../../_common/script/FloatPrecision.coffee"
+import Rand from "./../../../_common/script/Rand.coffee"
 
 export default class UTM_TransformCalculator_zoomScaleToStyleScale extends UnitTestManagerBase
 

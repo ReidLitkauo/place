@@ -1,5 +1,5 @@
-import FloatPrecision from '../../../_common/FloatPrecision.coffee'
-import Globals from '../../../_common/Globals.coffee'
+import FloatPrecision from '../../../_common/script/FloatPrecision.coffee'
+import Globals from '../../../_common/script/Globals.coffee'
 
 export default class CoordinateSpaceConverter
 

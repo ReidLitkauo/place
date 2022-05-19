@@ -1,6 +1,6 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import CanvasPosition from "./_CanvasPosition.coffee"
-import Rand from "./../../../_common/Rand.coffee"
+import Rand from "./../../../_common/script/Rand.coffee"
 
 export default class UTM_CanvasPosition_set_Z extends UnitTestManagerBase
 

@@ -1,7 +1,7 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import CanvasPosition from "./_CanvasPosition.coffee"
-import FloatPrecision from "./../../../_common/FloatPrecision.coffee"
-import Rand from "./../../../_common/Rand.coffee"
+import FloatPrecision from "./../../../_common/script/FloatPrecision.coffee"
+import Rand from "./../../../_common/script/Rand.coffee"
 
 export default class UTM_CanvasPosition_set_XY extends UnitTestManagerBase
 

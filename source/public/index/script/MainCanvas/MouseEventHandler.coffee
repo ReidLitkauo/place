@@ -1,4 +1,4 @@
-import Globals from "../../../_common/Globals.coffee"
+import Globals from "../../../_common/script/Globals.coffee"
 
 export default class MouseEventHandler
 
@@ -8,8 +8,9 @@ export default class MouseEventHandler
 		this._setAnchor evt
 	
 	onMouseMove: (evt) =>
-		if this._anchor?.isSet
+		if evt.buttons and this._anchor?.isSet
 			this._moveCanvasViaMouseDrag evt
+		else then this._clearAnchor()
 	
 	onMouseUp: (evt) =>
 		this._clearAnchor()
@@ -17,6 +18,7 @@ export default class MouseEventHandler
 	onWheel: (evt) =>
 		zoomLevelDelta = -1 * Math.round evt.deltaY / Math.abs evt.deltaY
 		this.canvasPosition.addZoomLevel zoomLevelDelta
+		if evt.buttons then this._setAnchor evt
 
 	_setAnchor: (evt) =>
 		rawPos = this.canvasPosition.getRaw()

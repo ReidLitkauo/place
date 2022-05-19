@@ -1,10 +1,36 @@
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: normal;
+  src: url("/assets/fonts/NotoSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  src: url("/assets/fonts/NotoSans-Bold.ttf");
+}
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: normal;
+  font-style: italic;
+  src: url("/assets/fonts/NotoSans-Italic.ttf");
+}
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-style: italic;
+  src: url("/assets/fonts/NotoSans-BoldItalic.ttf");
+}
+@font-face {
+  font-family: "Noto Sans Mono";
+  src: url("/assets/fonts/NotoSansMono-VariableFont_wdth,wght.ttf");
+}
 #main-canvas-parent {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FFF;
+  background-color: #333;
 }
 #main-canvas-parent #main-canvas {
   position: fixed;
@@ -28,4 +54,25 @@
   width: 100%;
   height: 100%;
   transform: scale(120%);
+}
+
+.widget {
+  position: fixed;
+  z-index: 200;
+  background: white;
+  box-shadow: 0 0 30px black;
+  border-radius: 100vh;
+  color: black;
+  font-size: 100%;
+  text-align: center;
+}
+
+#position-widget {
+  top: 3vh;
+  left: 50vw;
+  width: 12em;
+  transform: translateX(-50%);
+  padding: 0.4em 1em 0.5em;
+  font-family: "Noto Sans Mono";
+  font-weight: bold;
 }

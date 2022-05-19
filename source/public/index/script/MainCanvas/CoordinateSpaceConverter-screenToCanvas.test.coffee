@@ -1,6 +1,6 @@
 import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
-import Rand from "./../../../_common/Rand.coffee"
-import FloatPrecision from "./../../../_common/FloatPrecision.coffee"
+import Rand from "./../../../_common/script/Rand.coffee"
+import FloatPrecision from "./../../../_common/script/FloatPrecision.coffee"
 import CoordinateSpaceConverter from "./CoordinateSpaceConverter.coffee"
 
 export default class UTM_CoordinateSpaceConverter_screenToCanvas extends UnitTestManagerBase

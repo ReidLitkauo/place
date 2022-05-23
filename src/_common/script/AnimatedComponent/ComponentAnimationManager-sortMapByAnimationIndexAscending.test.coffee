@@ -1,4 +1,4 @@
-import UnitTestManagerBase from "./../../UnitTestManagerBase.coffee"
+import UnitTestManagerBase from "./../../../UnitTestManagerBase.coffee"
 import Rand from "./../Rand.coffee"
 import FloatPrecision from "./../FloatPrecision.coffee"
 import ComponentAnimationManager from './ComponentAnimationManager.coffee'

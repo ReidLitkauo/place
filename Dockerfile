@@ -10,9 +10,6 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
-COPY source/server ./source/server
-RUN ./actions/back-end/build
-
 EXPOSE 8090
 
 CMD ["./actions/back-end/run-server"]

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-clear
-python ./actions/front-end/build-scripts/structure.py
-python ./actions/front-end/build-scripts/style.py
-python ./actions/front-end/build-scripts/script.py
-

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./actions/front-end/build && docker build -t reid-litkauo-place:latest .
+

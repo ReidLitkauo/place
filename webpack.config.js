@@ -21,7 +21,7 @@ module.exports = {
 		],
 	},
 
-	entry: './source/public/index/script.coffee',
+	entry: './src/index/script.coffee',
 	output: {
 		path: path.resolve(__dirname, 'public/static/index'),
 		filename: 'script.js'

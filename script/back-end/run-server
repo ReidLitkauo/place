@@ -1,0 +1,5 @@
+#!/bin/sh
+
+actions/front-end/build
+go run actions/back-end/server.go
+

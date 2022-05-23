@@ -1,5 +1,0 @@
-#!/bin/sh
-
-./actions/container/stop
-sudo docker run -dp 8090:8090 reid-litkauo-place:latest
-

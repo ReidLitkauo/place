@@ -10,7 +10,8 @@ export default class MouseEventHandler
 	onMouseMove: (evt) =>
 		if evt.buttons and this._anchor?.isSet
 			this._moveCanvasViaMouseDrag evt
-		else then this._clearAnchor()
+		else
+			this._clearAnchor()
 	
 	onMouseUp: (evt) =>
 		this._clearAnchor()

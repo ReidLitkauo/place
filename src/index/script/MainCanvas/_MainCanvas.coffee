@@ -34,6 +34,6 @@ export default class MainCanvas extends AnimatedComponent
 			<canvas id={this.id} ref={this.ref}
 				width={Globals.BOARD_SIDE_LENGTH_IN_TILES} height={Globals.BOARD_SIDE_LENGTH_IN_TILES} >
 			</canvas>
-			<CanvasReticle canvasPosition={this.props.canvasPosition} coordinateSpaceConverter={this.coordinateSpaceConverter} />
+			<CanvasReticle canvasPosition={this.props.canvasPosition} selectedColorCode={this.props.selectedColorCode} coordinateSpaceConverter={this.coordinateSpaceConverter} />
 		</div>
 

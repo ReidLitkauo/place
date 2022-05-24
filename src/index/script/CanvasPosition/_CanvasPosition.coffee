@@ -59,7 +59,7 @@ export default class CanvasPosition
 	set: (x, y, zoomLevel) =>
 		[normalizedX, normalizedY, normalizedZoomLevel] = this._normalizeCoords x, y, zoomLevel
 		this._setWithNormalizedCoords normalizedX, normalizedY, normalizedZoomLevel
-		this._updateFunction? this.getRaw()
+		this._updateFunction? this
 		this.getRaw()
 	
 	_normalizeCoords: (x, y, zoomLevel) =>

@@ -1,11 +1,11 @@
 {
 
-	"sourceDirectory": "./source/",
+	"sourceDirectory": "./src/",
 
 	"targetDirectoryForHtml": "./public/",
 	"targetDirectoryForCss":  "./public/static/",
 
-	"htmlTemplateFile": "./source/template.pug",
+	"htmlTemplateFile": "./src/template.pug",
 
 	"endpoints": [
 		"index"

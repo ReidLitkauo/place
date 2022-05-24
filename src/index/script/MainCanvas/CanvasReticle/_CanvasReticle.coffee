@@ -1,6 +1,7 @@
 import React from 'react'
 import AnimatedComponent from "../../../../_common/script/AnimatedComponent/_AnimatedComponent.coffee"
 import Globals from '../../../../_common/script/Globals.coffee'
+import JunkDrawer from '../../../../_common/script/JunkDrawer.coffee'
 
 export default class CanvasReticle extends AnimatedComponent
 
@@ -22,7 +23,9 @@ export default class CanvasReticle extends AnimatedComponent
 		height: (bottomRight.y - topLeft.y) + "px"
 	
 	render: =>
-		<div id="canvas-reticle" ref={this.ref}>
+		<div id="canvas-reticle" ref={this.ref} style={this.computeStyle()}>
 			<img src="/assets/images/reticle.svg" />
 		</div>
 
+	computeStyle: =>
+		backgroundColor: JunkDrawer.convertColorCodeToCSSColor this.props.selectedColorCode

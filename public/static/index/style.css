@@ -135,6 +135,7 @@ button.button.cancel {
   grid-row-gap: 1vh;
   padding: 1vh;
   background: white;
+  box-shadow: 0 0 10px black;
   transition: bottom 0.3s ease-in-out;
 }
 @media only screen and (orientation: landscape) {

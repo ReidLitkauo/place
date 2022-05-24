@@ -11,6 +11,7 @@ export default class StatusWidget extends React.Component
 	############################################################################
 
 	render: =>
+		# TODO set status text properly
 		<form onSubmit={this.handleSubmit}>
 			<button type="submit" className="widget" id="status-widget">
 				{this.props.status}

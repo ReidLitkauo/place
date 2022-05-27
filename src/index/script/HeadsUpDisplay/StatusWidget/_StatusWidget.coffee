@@ -3,12 +3,8 @@ import Globals from '../../../../_common/script/Globals.coffee'
 
 export default class StatusWidget extends React.Component
 
-	############################################################################
-
 	constructor: (props) ->
 		super props
-
-	############################################################################
 
 	render: =>
 		# TODO set status text properly
@@ -18,15 +14,11 @@ export default class StatusWidget extends React.Component
 			</button>
 		</form>
 
-	#///////////////////////////////////////////////////////////////////////////
-	
 	handleSubmit: (e) =>
 		e?.preventDefault()
 		switch this.props.status
 			when Globals.STATUS_PLACETILE
 				this.showPalette()
-	
-	#===========================================================================
 	
 	showPalette: =>
 		this.props.setPaletteVisibility true

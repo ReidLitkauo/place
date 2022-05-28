@@ -1,5 +1,11 @@
+@use "../_common/style/Button.sass"
 @use "../_common/style/FontFace.sass"
+@use "../_common/style/SelectMixins.sass"
 
 @use "./style/MainCanvas/_MainCanvas.sass"
 @use "./style/HeadsUpDisplay/_HeadsUpDisplay.sass"
+@use "./style/Palette/_Palette.sass"
+
+body
+	@include SelectMixins.no-select
 

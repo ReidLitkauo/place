@@ -1,5 +1,5 @@
 #!/bin/sh
 
-./actions/container/stop
+./script/container/stop
 docker run -dp 8090:8090 reid-litkauo-place:latest
 

@@ -1,4 +1,5 @@
 module.exports = {
-	"preset": "coffeescript-jest-preset",
+	"testEnvironment": "jsdom",
+	"preset": "ts-jest",
 }
 

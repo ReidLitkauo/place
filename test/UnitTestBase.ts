@@ -1,11 +1,12 @@
+import TestCase from "./TestCase"
+
 export default abstract class UnitTestBase {
 
 	protected readonly numTestCases: number
 	protected readonly testParameters: any
 
-	protected testCases: any[] = []
-	protected expected: any[] = []
-	protected actual: any[] = []
+	protected expected: TestCase[] = []
+	protected actual:   TestCase[] = []
 
 	constructor (numTestCases: number, testParameters: any) {
 		this.numTestCases = numTestCases
@@ -26,40 +27,29 @@ export default abstract class UnitTestBase {
 
 	private buildTestCases = () => {
 		for (let i = 0; i < this.numTestCases; i++) {
-			[ this.testCases[i], this.expected[i] ] = this.buildOneTestCaseAndExpected(i)
+			this.expected[i] = this.buildOneExpectedTestCase(i)
 		}
 	}
 
-	protected abstract buildOneTestCaseAndExpected(i: number): [any, any]
+	protected abstract buildOneExpectedTestCase(i: number): TestCase
 
 	//==========================================================================
 
 	private runTestCases = () => {
 		for (let i = 0; i < this.numTestCases; i++) {
-			this.actual[i] = this.runOneTestCase(this.testCases[i])
+			this.actual[i] = new TestCase({
+				input:  this.expected[i].input,
+				output: this.runOneTestInput(this.expected[i].input)
+			})
 		}
 	}
 
-	protected abstract runOneTestCase(testCase: any): any
+	protected abstract runOneTestInput(input: any): any
 
 	//==========================================================================
 
 	private assertTestCases = () => {
-		let zippedExpected = this.zipTestCasesAndResults(this.testCases, this.expected)
-		let zippedActual   = this.zipTestCasesAndResults(this.testCases, this.actual)
-		expect(zippedActual).toStrictEqual(zippedExpected)
-	}
-
-	private zipTestCasesAndResults = (testCases: any[], results: any[]): any[] => {
-		let ret: any[] = []
-		let length: number = Math.min(testCases.length, results.length)
-		for ( let i = 0; i < length; i++ ) {
-			ret[i] = {
-				testCase: testCases[i],
-				result:   results[i],
-			}
-		}
-		return ret
+		expect(this.actual).toStrictEqual(this.expected)
 	}
 
 }

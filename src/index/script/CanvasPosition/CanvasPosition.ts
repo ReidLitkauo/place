@@ -74,8 +74,8 @@ export default class CanvasPosition {
 	//==========================================================================
 
 	private normalizeCoords = (pos: Point, zoomLevel: number): [Point, number] => {
-		[pos, zoomLevel] = this.normalizeCoordsPrecision(pos, zoomLevel); // Don't remove this semicolon
-		[pos, zoomLevel] = this.normalizeCoordsRange(pos, zoomLevel)
+		;[pos, zoomLevel] = this.normalizeCoordsPrecision(pos, zoomLevel)
+		;[pos, zoomLevel] = this.normalizeCoordsRange(pos, zoomLevel)
 		return [pos, zoomLevel]
 	}
 

@@ -5,7 +5,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.coffee/,
+				test: /\.tsx?$/,
 				use: [
 					{
 						loader: 'babel-loader',
@@ -15,21 +15,22 @@ module.exports = {
 							],
 						},
 					},
-					{ loader: "coffee-loader" },
+					{
+						loader: "ts-loader"
+					},
 				],
 			},
 		],
 	},
 
-	entry: './src/index/script.coffee',
+	resolve: {
+		extensions: ['.ts', '.tsx'],
+	},
+
+	entry: './src/index/script.tsx',
 	output: {
 		path: path.resolve(__dirname, 'public/static/index'),
 		filename: 'script.js'
-	},
-
-	externals: {
-		'react-dom': 'ReactDOM',
-		'react': 'React',
 	},
 
 }
